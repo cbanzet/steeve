@@ -1,0 +1,16 @@
+<h1>Hero details</h1>
+
+<div class="hero-detail" *ngIf="hero">
+    <h2>{{hero.name | uppercase}} Details</h2>
+    <div>
+      <span>id: </span>{{hero.id}}
+    </div>
+    <div>
+      <label for="hero-name">Hero name: </label>
+      <span> {{hero.name}} </span>
+    </div>
+  </div>
+  
+<a mat-raised-button color="primary" (click)="goBack()"> Back </a>
+    
+  

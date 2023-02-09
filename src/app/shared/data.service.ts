@@ -1,0 +1,34 @@
+import { Injectable } from '@angular/core';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { HeroI, HeroSt } from '../model/hero';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+
+  constructor(private afs : AngularFirestore) {}
+
+  // Ajouter un hero (create)
+  addHero(hero: HeroSt){
+    hero.idS = this.afs.createId();
+    return this.afs.collection('/Heroes').add(hero);
+  }
+
+  //Afficher la liste des heros (read)
+  getAllHeroes(){
+    return this.afs.collection('/Heroes').snapshotChanges();
+  }
+
+  //Mettre a jour la liste des heros (update)
+  updateHero(hero : HeroSt){
+    this.deleteHero(hero);
+    this.addHero(hero);
+  }
+
+  //Supprimer un hero (delete)
+  deleteHero(hero : HeroSt){
+    return this.afs.doc('/Heroes/'+hero.idS).delete();
+  }
+}

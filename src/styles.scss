@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+header{ margin:0; background-color: primary ;}
+html, body { height: 100%; }
+
+h1{
+  color: #0072af;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+
+h2{
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  
+body, input[type = "text"], button{
+color: black;
+
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+button{
+  color: primary;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+button:hover{
+  background-color:rgb(119, 119, 119);
+  color: black;
+  cursor: autto;
+}
+
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

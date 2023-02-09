@@ -1,0 +1,39 @@
+
+<button mat-icon-button style="float: right; margin: 5px;"matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+
+
+<div mat-dialog-content>
+    <header>
+        <h1 > Add hero </h1>
+    </header>
+    <p><mat-form-field>
+        <span>
+            <mat-icon>person</mat-icon>
+            First name</span>
+            <input matInput id="firstName"  [(ngModel)]="firstName" placeholder = "Hero First Name">
+
+        </mat-form-field></p>
+
+        <p><mat-form-field>
+            <span>Name</span>
+            <input matInput id="name"  [(ngModel)]="name" placeholder = "Hero name">
+
+        </mat-form-field></p>
+
+        <p><mat-form-field>
+            <span>Age</span>
+            <input matInput type="number" id = "age"  [(ngModel)]="age" placeholder="Hero age">
+        </mat-form-field></p>
+
+        <p><mat-form-field>
+            <span>Description</span>
+            <input matInput id="description"  [(ngModel)]="description" placeholder="Short description">
+        </mat-form-field></p>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button color = "primary" (click)="addHero()" > Add </button>
+    <button mat-raised-button color="warn" matDialogClose > Close </button>
+</div>

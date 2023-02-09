@@ -1,0 +1,50 @@
+.demo-table {
+    width: 100%;
+  }
+  h1{
+    color: black;
+    text-align: center;
+  }
+  
+  .demo-button-container {
+    padding-bottom: 16px;
+  }
+  
+  .demo-button + .demo-button {
+    margin-left: 8px;
+  }
+  
+  
+    a {
+      background-color: indigo;
+      
+      display: inline-block;
+      color: #fff;
+      text-align: center;
+      box-sizing: border-box;
+    }
+  
+    a:hover {
+      background-color: rgb(172, 121, 255);
+      
+    }
+  
+    mat-grid-tile {
+    background: lightblue;
+  }
+  .example-container {
+    height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  .mat-mdc-row:hover .mat-mdc-cell {
+    border-color: currentColor;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+  
