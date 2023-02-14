@@ -1,46 +1,81 @@
-<div>
-  <h1>  
-    
-  </h1>
-  <button mat-raised-button color = "primary" (click)="openDialog()">
+<div align ="end">
+  <br>
+  <div > 
+    <button mat-raised-button color = "primary" (click)="openDialog()">
     <mat-icon>add</mat-icon> Add New hero
-   </button>
-<h1>Heroes list</h1>
+   </button> 
+  </div>
+  <br>
+  <div>
+  <input matInput id="firstName" [(ngModel)]="searchText" placeholder = "Search">
 </div>
 
-<div>
-    <table mat-table [dataSource]="heroesList" class="mat-elevation-z8 demo-table">
+</div>
+
+
+<h1>Heroes list</h1>
+
+<div >
+    <table mat-table [dataSource]="heroesList | search: searchText" class="mat-elevation-z8 demo-table">
         <ng-container matColumnDef="firstName">
           <th mat-header-cell *matHeaderCellDef>First name</th>
-          <td mat-cell *matCellDef="let hero">{{hero.firstName}} </td>
-        </ng-container>
+          <td mat-cell *matCellDef="let hero " >
+            <span *ngIf="!hidden" >{{hero.firstName}}</span>
+            <input matInput *ngIf="hidden" [(ngModel)]="hero.firstName" placeholder= "edit hero first name">
+          </td>
+          </ng-container>
 
         <ng-container matColumnDef="age">
             <th mat-header-cell *matHeaderCellDef>Age</th>
-            <td mat-cell *matCellDef="let hero">{{hero.age}}</td>
+            <td mat-cell *matCellDef="let hero">
+              <span *ngIf="!hidden" >{{hero.age}}</span>
+              <input matInput *ngIf="hidden" [(ngModel)]="hero.age" placeholder= "Edit hero Age">
+            </td>
           </ng-container>
       
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Name</th>
           <td mat-cell *matCellDef="let hero">
-            {{hero.name}}
+            <span *ngIf="!hidden" >{{hero.name}}</span>
+            <input matInput *ngIf="hidden" [(ngModel)]="hero.name" placeholder= "Edit hero Name">
           </td>
         </ng-container>
       
         <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef>Description
-          <td mat-cell *matCellDef="let hero">{{hero.description}}</td>
+          <th mat-header-cell *matHeaderCellDef> Description
+          <td mat-cell *matCellDef="let hero">
+            <span *ngIf="!hidden" >{{hero.description}}</span>
+            <input matInput *ngIf="hidden" [(ngModel)]="hero.description" placeholder= "Short description">
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef>Actions
+          <th mat-header-cell *matHeaderCellDef>
           <td mat-cell *matCellDef="let hero">
             <button
               mat-flat-button
-              routerLink="/detail/1"> 
-              <mat-icon>visibility</mat-icon>
+              *ngIf="!hidden"
+              (click)="getHero(hero)"> 
+              <mat-icon>
+                visibility 
+              </mat-icon>
             </button>
             <button
+              mat-raised-button
+              color= "primary"
+              *ngIf="!hidden"
+              (click)= "toggleBadgeVisibility()">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-raised-button 
+              *ngIf="hidden"
+              color= "primary"
+              (click)= "updateHero(hero)">
+              <mat-icon>done</mat-icon>
+            </button>
+            <button
+            *ngIf="!hidden"
             mat-raised-button
             color="warn"
             (click)="deleteHero(hero)">
@@ -55,4 +90,32 @@
          *matRowDef="let row; columns: displayedColumns;">
         </tr>
       </table>
+
+</div>
+<br>
+<br>
+<div>
+  <mat-card class="card" *ngIf="hiddenDetails">
+    <mat-card-header>
+      <mat-card-title>  Details </mat-card-title>
+      <mat-card-subtitle>
+        <div *ngIf="heroesList">
+          <span> {{ heroObj.firstName }}</span>
+          <br>
+          <span> {{ heroObj.name }}</span>
+          <br>
+          <span> {{ heroObj.age }}</span>
+          <br>
+          <span> {{ heroObj.description }}</span>
+        </div>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="warn"
+      (click)="toggleDetailsBadgeVisibility()">
+        <mat-icon>close</mat-icon>
+        Close
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>

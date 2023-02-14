@@ -21,12 +21,16 @@ export class DataService {
     return this.afs.collection('/Heroes').snapshotChanges();
   }
 
-  //Mettre a jour la liste des heros (update)
-  updateHero(hero : HeroSt){
-    this.deleteHero(hero);
-    this.addHero(hero);
+  getHero(hero : HeroSt){
+    return this.afs.collection('/Heroes' +hero.idS).get();
   }
 
+  //Mettre a jour la liste des heros (update)
+  updateHero(hero : HeroSt){
+    this.afs.doc('/Heroes/' +hero.idS).update(hero);
+  }
+
+ 
   //Supprimer un hero (delete)
   deleteHero(hero : HeroSt){
     return this.afs.doc('/Heroes/'+hero.idS).delete();

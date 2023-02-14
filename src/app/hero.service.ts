@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HEROES } from './mock-heroes';
-import { HeroI } from './model/hero';
+import { HeroI, HeroSt } from './model/hero';
 import { Observable, of } from 'rxjs';
+import { DataService } from './shared/data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
-  constructor() { }
+  constructor( private dataService : DataService ) { }
   getHeroes(): Observable <HeroI[]> {
     const heroes = of (HEROES);
     return heroes;
@@ -17,5 +18,6 @@ export class HeroService {
     const hero = HEROES.find(h => h.name === name)!;
     return of (hero);
   }
+  
   
 }

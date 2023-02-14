@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, ReplaySubject } from 'rxjs';
 import { DialogComponent } from '../dialog/dialog.component';
+import { HeroDetailComponent } from '../local-hero-detail/hero-detail.component';
 import { HEROES } from '../mock-heroes';
 import { HeroSt, HeroI } from '../model/hero';
 import { DataService } from '../shared/data.service';
@@ -30,8 +31,18 @@ export class HeroEditComponent implements OnInit {
   name : string = '';
   description : string = '';
   age : string = '';
-  position  = this.heroesList.entries();
-  ation : any ;
+  searchText = '';
+  uptName : string ='';
+  hidden = false;
+  hiddenDetails = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+  toggleDetailsBadgeVisibility() {
+    this.hiddenDetails = !this.hiddenDetails;
+  }
+  
 
 
   constructor(private data : DataService,
@@ -42,15 +53,19 @@ openDialog(){
     width: '350px',})
   }
 
+  openHeroDialog(){
+    this.matDialog.open(HeroDetailComponent,
+      {width: '350px',})
+  }
+
   displayedColumns  = [ 'firstName', 'name','age' , 'description' , 'action' ];
   dataToDisplay = [...this.heroesList];
 
   dataSource = new ExampleDataSource(this.dataToDisplay);
 
-
-
   ngOnInit(): void {
     this.getAllHeroes();
+    
   }
 
   getAllHeroes(){
@@ -72,11 +87,10 @@ openDialog(){
   }
 
   addHero(){
-    if(this.name === ''){
+    if(this.name === '' || this.firstName === ''){
       alert('Please input the hero name');
       return;
     }
-    
     this.heroObj.firstName = this.firstName ;
     this.heroObj.name = this.name
     this.heroObj.description = this.description;
@@ -86,8 +100,21 @@ openDialog(){
     this.resetForms();
   }
 
-  updateHero(){
-    
+  updateHero(hero : HeroSt){
+     this.hidden = !this.hidden; 
+    if(window.confirm('Update data to ' + hero.firstName + hero.name  ))
+         {this.data.updateHero(hero);}
+  }
+
+  getHero(hero : HeroSt){
+    this.hiddenDetails = !this.hiddenDetails;
+    if(window.confirm('Show ' +hero.firstName+ ' details?')){
+      this.data.getHero(hero);
+    }
+    this.heroObj.firstName = hero.firstName ;
+    this.heroObj.name = hero.name
+    this.heroObj.description = hero.description;
+    this.heroObj.age = hero.age;
   }
 
   deleteHero(hero : HeroSt){

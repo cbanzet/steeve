@@ -13,7 +13,7 @@ import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFi
 })
 export class DialogComponent implements OnInit {
 
-  heroObj : HeroSt = {
+  heroObj: HeroSt = {
     idS: '',
     firstName: '',
     name: '',
