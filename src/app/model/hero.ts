@@ -4,15 +4,5 @@ export interface HeroSt{
     name: string;
     age: string;
     description: string;
-    action : any;
-    
-    
-}
-
-export interface HeroI {
-    id: number;
-    name: string;
-    position: number; 
-    symbol: string;
-    
+    action : any;   
 }

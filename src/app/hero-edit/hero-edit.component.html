@@ -1,14 +1,12 @@
-<div align ="end">
-  <br>
-  <div > 
-    <button mat-raised-button color = "primary" (click)="openDialog()">
-    <mat-icon>add</mat-icon> Add New hero
-   </button> 
-  </div>
-  <br>
-  <div>
-  <input matInput id="firstName" [(ngModel)]="searchText" placeholder = "Search">
-</div>
+<div>
+      <mat-form-field>
+        <mat-label>
+          <mat-icon>search</mat-icon>
+          Search
+        </mat-label>
+        <input matInput id="firstName" [(ngModel)]="searchText" placeholder = "Search">
+      </mat-form-field>
+   
 
 </div>
 
@@ -21,7 +19,7 @@
           <th mat-header-cell *matHeaderCellDef>First name</th>
           <td mat-cell *matCellDef="let hero " >
             <span *ngIf="!hidden" >{{hero.firstName}}</span>
-            <input matInput *ngIf="hidden" [(ngModel)]="hero.firstName" placeholder= "edit hero first name">
+                <input matInput *ngIf="hidden" [(ngModel)]="hero.firstName" placeholder= "edit hero first name">
           </td>
           </ng-container>
 
@@ -37,7 +35,7 @@
           <th mat-header-cell *matHeaderCellDef>Name</th>
           <td mat-cell *matCellDef="let hero">
             <span *ngIf="!hidden" >{{hero.name}}</span>
-            <input matInput *ngIf="hidden" [(ngModel)]="hero.name" placeholder= "Edit hero Name">
+                <input matInput *ngIf="hidden" [(ngModel)]="hero.name" placeholder= "Edit hero Name">
           </td>
         </ng-container>
       
@@ -45,7 +43,7 @@
           <th mat-header-cell *matHeaderCellDef> Description
           <td mat-cell *matCellDef="let hero">
             <span *ngIf="!hidden" >{{hero.description}}</span>
-            <input matInput *ngIf="hidden" [(ngModel)]="hero.description" placeholder= "Short description">
+              <input matInput *ngIf="hidden" [(ngModel)]="hero.description" placeholder= "Short description">
           </td>
         </ng-container>
 
@@ -55,14 +53,14 @@
             <button
               mat-flat-button
               *ngIf="!hidden"
-              (click)="getHero(hero)"> 
+              (click)="getHero(hero)"
+              (click)="openHeroDetailDialog()"> 
               <mat-icon>
                 visibility 
               </mat-icon>
             </button>
             <button
-              mat-raised-button
-              color= "primary"
+              mat-flat-button
               *ngIf="!hidden"
               (click)= "toggleBadgeVisibility()">
               <mat-icon>edit</mat-icon>

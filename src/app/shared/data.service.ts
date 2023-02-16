@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { HeroI, HeroSt } from '../model/hero';
+import { HeroSt } from '../model/hero';
 
 @Injectable({
   providedIn: 'root'

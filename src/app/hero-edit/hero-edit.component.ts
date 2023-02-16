@@ -3,9 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, ReplaySubject } from 'rxjs';
 import { DialogComponent } from '../dialog/dialog.component';
-import { HeroDetailComponent } from '../local-hero-detail/hero-detail.component';
-import { HEROES } from '../mock-heroes';
-import { HeroSt, HeroI } from '../model/hero';
+import { HeroDetailDialogComponent } from '../hero-detail-dialog/hero-detail-dialog.component';
+import { HeroSt } from '../model/hero';
 import { DataService } from '../shared/data.service';
 
 
@@ -44,7 +43,6 @@ export class HeroEditComponent implements OnInit {
   }
   
 
-
   constructor(private data : DataService,
               private matDialog : MatDialog){}
 
@@ -53,10 +51,7 @@ openDialog(){
     width: '350px',})
   }
 
-  openHeroDialog(){
-    this.matDialog.open(HeroDetailComponent,
-      {width: '350px',})
-  }
+
 
   displayedColumns  = [ 'firstName', 'name','age' , 'description' , 'action' ];
   dataToDisplay = [...this.heroesList];
@@ -122,6 +117,18 @@ openDialog(){
       this.data.deleteHero(hero);
     }
   }
+  openHeroDetailDialog(){
+    this.matDialog.open(HeroDetailDialogComponent,{
+      width: '350px',
+      data : {
+        firstName : this.heroObj.firstName,
+        name : this.heroObj.name,
+        age : this.heroObj.age,
+        description : this.heroObj.description,
+      }
+    })
+     
+    }
 
 }
 

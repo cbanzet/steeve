@@ -1,0 +1,59 @@
+
+<button mat-icon-button style="float: right; margin: 5px;"matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+
+
+<div mat-dialog-content>
+    <header>
+        <h1 > Connexion </h1>
+    </header>
+    <mat-icon>person</mat-icon>
+    <div *ngIf="!isSignedIn && signInBadge" >
+        <header>
+            <h2>Signin</h2>
+        </header>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="text" #emailSignup placeholder="ex. pierre.pon@gmail.com">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" #passwordSignup placeholder="New password">
+        </mat-form-field>
+        <button mat-raised-button (click)="onSignup(emailSignup.value , passwordSignup.value)">Sign in</button>
+        <a> or </a>
+        <button mat-raised-button (click)="signInBadgeToogle()"> Login</button> 
+    </div>
+    <br>
+    <div *ngIf="!isSignedIn && !signInBadge">
+        <header>
+            <h2>Login</h2>
+        </header>
+        <mat-form-field>
+            <input matInput type="text" #email placeholder="email"/>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput  type="password" #password placeholder ="password"/>
+        </mat-form-field>
+        <button mat-raised-button (click)="onSignin(email.value , password.value)">Login</button>
+        <a> or </a>
+        <button mat-raised-button (click)="signInBadgeToogle()"> Sign in </button>
+    </div>
+    <br>
+    <div *ngIf="!isSignedIn">
+        <header>
+            <h2>Sign in with google</h2>
+        </header>
+        <div>
+        <button mat-raised-button color="accent" (click)="signInWithGoogle()" (click)="signInBadgeToogle()"> Sign in with Google </button>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="isSignedIn">
+    <header> You are logged </header>
+    <h2> Want to logout? </h2>
+    <button mat-raised-button color="warn" (click)="handleLogout()" align="end"> Logout </button>
+</div>

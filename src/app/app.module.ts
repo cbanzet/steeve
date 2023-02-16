@@ -10,7 +10,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FirebaseTSApp } from 'firebasets/firebasetsApp/firebaseTSApp';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button'; 
-import { HeroesComponent } from './localHeroes/heroes.component';
 import { MatListModule } from '@angular/material/list'; 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';  
@@ -18,21 +17,25 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
  import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatBadgeModule } from '@angular/material/badge'; 
+import { MatInputModule } from '@angular/material/input'; 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { HeroDetailComponent } from './local-hero-detail/hero-detail.component';
 import { HeroEditComponent } from './hero-edit/hero-edit.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { SearchPipe } from './search.pipe';
+import { ConnexionDialogComponent } from './connexion-dialog/connexion-dialog.component';
+import { UserProfilComponent } from './user-profil/user-profil.component';
+import { HeroDetailDialogComponent } from './hero-detail-dialog/hero-detail-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
     HeroEditComponent,
     DialogComponent,
-    SearchPipe
+    SearchPipe,
+    ConnexionDialogComponent,
+    UserProfilComponent,
+    HeroDetailDialogComponent
     
   ],
   imports: [
@@ -50,6 +53,7 @@ import { SearchPipe } from './search.pipe';
     MatButtonToggleModule,
     MatTableModule,
     MatToolbarModule,
+    MatInputModule,
     MatBadgeModule,
     MatDialogModule,
     FormsModule,

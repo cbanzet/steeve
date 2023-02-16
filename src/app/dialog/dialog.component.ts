@@ -40,6 +40,6 @@ export class DialogComponent implements OnInit {
     this.heroObj.age = this.age;
     
     this.dataService.addHero(this.heroObj);
-    alert("Hero " + this.firstName + " successfully add");
+  
   }
 }
