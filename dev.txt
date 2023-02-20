@@ -1,0 +1,25 @@
+15/02/2023
+
+- Fermer la modal automatiquement apres avoir créer le hero
+- Mettre tous les champs input au format angular material
+- Mettre le composant visualisant les details d'un hero dans une modal
+- Supprimer tous les composants non utilisés
+- Ajouter un module d'authentification par email/password
+- Ajouter l'authentification par google
+- Ajouter l'authentification par numéro de mobile
+
+
+
+  updateForet(foret: Foret) {
+    const batch = this.firestore.firestore.batch();
+    const nextDocument = this.firestore.firestore.collection('forets').doc(foret.id);
+    let data =  Object.assign({}, {...foret, timestamplastupdate: new Date().getTime()});
+    batch.update(nextDocument, {...data});
+    return from
+    (  new Promise<any>((resolve, reject) => {
+        batch.commit().then(() => {
+          resolve({...data})
+        }).catch((error) => { reject(error) })
+      })
+    )
+  }
