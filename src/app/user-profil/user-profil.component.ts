@@ -14,12 +14,16 @@ export class UserProfilComponent implements OnInit {
 
   @Output() isLogout = new EventEmitter<void>()
   isSignedIn = false;
+  userData: any;
   constructor(public firebaseService : FirebaseService,
               private matDialog : MatDialog,
               private location : Location) { }
 
   ngOnInit(): void {
     this.connexion()
+    var data = JSON.parse(localStorage.getItem('user_data') || '{}');
+    this.userData = data.user.phoneNumber;
+    console.log(this.userData);
   }
 
   connexion(){
@@ -28,6 +32,7 @@ export class UserProfilComponent implements OnInit {
     else
     this.isSignedIn = false
   }
+
   openConnexionDialog(){
     this.matDialog.open(ConnexionDialogComponent,{
       width: '350px',})

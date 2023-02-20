@@ -8,32 +8,31 @@
         <h1 > {{firstName}} Detail </h1>
     </header>
 <mat-icon>person</mat-icon>
-    <p>
+    
         <mat-form-field>
             <mat-label>First name</mat-label>
-            <span> {{ firstName }} </span>
+            <span> First name </span>
+            <h2> {{ firstName }} </h2>
         </mat-form-field>
-    </p>
+    
+       <mat-form-field>
+            <span> Name </span>
+            <h2> {{ name }} </h2>
+        </mat-form-field>
 
-        <p><mat-form-field>
-            <mat-label>Name</mat-label>
-            <span> {{ name }} </span>
-
-        </mat-form-field></p>
-
-        <p><mat-form-field>
+        <mat-form-field>
             <mat-label>Age</mat-label>
-            <span> {{ age }} </span>
+            <span> Age </span>
+            <h2> {{ age }} </h2>
+        </mat-form-field>
 
-        </mat-form-field></p>
-
-        <p><mat-form-field>
+       <mat-form-field>
             <mat-label>Description</mat-label>
-            <span> {{ description }} </span>
-
-        </mat-form-field></p>
+            <span> Description </span>
+            <h2> {{ description }} </h2>
+        </mat-form-field>
 </div>
 
-<div mat-dialog-actions>
+<div mat-dialog-actions align="end">
     <button mat-raised-button color="warn" matDialogClose > Close </button>
 </div>

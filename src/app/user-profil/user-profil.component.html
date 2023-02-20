@@ -1,5 +1,6 @@
-<p>user-profil works!</p>
+<h1>User profil!</h1>
 <div *ngIf="isSignedIn">
+    <h2>Welcome {{userData}} </h2>
 <button mat-raised-button color="warn" (click)="handleLogout()"> Logout</button>
 </div>
 <div *ngIf="!isSignedIn">

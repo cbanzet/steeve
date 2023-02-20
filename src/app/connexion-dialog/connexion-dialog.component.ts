@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { PhoneConnexionDialogComponent } from '../phone-connexion-dialog/phone-connexion-dialog.component';
 import { FirebaseService } from '../shared/firebase.service';
 
 
@@ -12,7 +14,7 @@ import { FirebaseService } from '../shared/firebase.service';
 export class ConnexionDialogComponent implements OnInit {
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor(public firebaseService : FirebaseService) { }
+  constructor(public firebaseService : FirebaseService, private matDialog: MatDialog) { }
   isSignedIn = false;
   signInBadge = false;
 
@@ -54,5 +56,10 @@ export class ConnexionDialogComponent implements OnInit {
     }
   }
 
+  openPhoneNumberDialog(){
+    this.matDialog.open(PhoneConnexionDialogComponent,{
+          width: '350px',
+      })
+    }
 }
 

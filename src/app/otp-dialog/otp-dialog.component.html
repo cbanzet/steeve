@@ -1,0 +1,12 @@
+<div>
+    <h1>put the code you received</h1>
+<ngx-otp-input
+[config]="otpInputConfig"
+(otpChange)="handleOtpChange($event)"
+(fill)="handleFillEvent($event)">
+</ngx-otp-input>
+</div>
+<br>
+<div>
+    <button mat-raised-button color="primary" (click)="handleClick()" align="end"> Verify code</button>
+</div>

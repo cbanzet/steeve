@@ -15,6 +15,9 @@ export class FirebaseService {
     .then(res =>{
       this.isLoggedIn = true
       localStorage.setItem('user',JSON.stringify(res.user))
+    }).catch((error) =>
+    {
+      alert(error.message)
     })
   }
 
@@ -23,7 +26,9 @@ export class FirebaseService {
     .then(res =>{
       this.isLoggedIn = true
       localStorage.setItem('user',JSON.stringify(res.user))
-    })
+    }).catch((error) => {
+    alert(error.message)
+  })
   }
   googleSignIn(){
     return this.firebaseAuth.signInWithPopup(new GoogleAuthProvider)
@@ -31,14 +36,21 @@ export class FirebaseService {
       this.isLoggedIn = true
       localStorage.setItem('user',JSON.stringify(res.user?.uid))
 
-    }, err =>{
-      alert(err.message);
-    })
+    }).catch((error)  =>{
+      alert(error.message)
+    }
+    )
+  }
+  phonelogin(){
+    return this.firebaseAuth.signInWithPhoneNumber
   }
   
   logout(){
     this.firebaseAuth.signOut()
     localStorage.removeItem('user')
     this.isLoggedIn = false;
+  }
+  get windowRef(){
+    return window
   }
 }

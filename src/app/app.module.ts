@@ -24,9 +24,14 @@ import { DialogComponent } from './dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { SearchPipe } from './search.pipe';
+import { NgxOtpInputModule } from 'ngx-otp-input';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ConnexionDialogComponent } from './connexion-dialog/connexion-dialog.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
 import { HeroDetailDialogComponent } from './hero-detail-dialog/hero-detail-dialog.component';
+import { OtpDialogComponent } from './otp-dialog/otp-dialog.component';
+import { PhoneConnexionDialogComponent } from './phone-connexion-dialog/phone-connexion-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +40,9 @@ import { HeroDetailDialogComponent } from './hero-detail-dialog/hero-detail-dial
     SearchPipe,
     ConnexionDialogComponent,
     UserProfilComponent,
-    HeroDetailDialogComponent
+    HeroDetailDialogComponent,
+    OtpDialogComponent,
+    PhoneConnexionDialogComponent
     
   ],
   imports: [
@@ -52,6 +59,9 @@ import { HeroDetailDialogComponent } from './hero-detail-dialog/hero-detail-dial
     MatIconModule,
     MatButtonToggleModule,
     MatTableModule,
+    AngularFireAuthModule,
+    NgxOtpInputModule,
+    AngularFirestoreModule,
     MatToolbarModule,
     MatInputModule,
     MatBadgeModule,

@@ -1,0 +1,24 @@
+<button mat-icon-button style="float: right; margin: 5px;"matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+
+
+<div mat-dialog-content>
+    <header>
+        <h1 > Phone number verification </h1>
+    </header>
+<mat-icon>person</mat-icon>
+    <p>
+        <mat-form-field>
+            <mat-label>Phone number</mat-label>
+            <input matInput id="phoneNumber" [(ngModel)]="phoneNumber" min="6" max="15" placeholder = "Enter your phone number">
+        </mat-form-field>
+    </p>
+
+</div>
+<div id= 'sign-in-button'></div>
+
+<div mat-dialog-actions align="end">
+    <button mat-raised-button  color = "primary" (click)="getOTP()" > Get code </button>
+    <button mat-raised-button color="warn" matDialogClose > Close </button>
+</div>

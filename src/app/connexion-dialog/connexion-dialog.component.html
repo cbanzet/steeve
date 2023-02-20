@@ -21,7 +21,7 @@
             <mat-label>Password</mat-label>
             <input matInput type="password" #passwordSignup placeholder="New password">
         </mat-form-field>
-        <button mat-raised-button (click)="onSignup(emailSignup.value , passwordSignup.value)">Sign in</button>
+        <button mat-raised-button color="accent" (click)="onSignup(emailSignup.value , passwordSignup.value)">Sign in</button>
         <a> or </a>
         <button mat-raised-button (click)="signInBadgeToogle()"> Login</button> 
     </div>
@@ -36,7 +36,7 @@
         <mat-form-field>
             <input matInput  type="password" #password placeholder ="password"/>
         </mat-form-field>
-        <button mat-raised-button (click)="onSignin(email.value , password.value)">Login</button>
+        <button mat-raised-button color ="primary" (click)="onSignin(email.value , password.value)">Login</button>
         <a> or </a>
         <button mat-raised-button (click)="signInBadgeToogle()"> Sign in </button>
     </div>
@@ -47,6 +47,17 @@
         </header>
         <div>
         <button mat-raised-button color="accent" (click)="signInWithGoogle()" (click)="signInBadgeToogle()"> Sign in with Google </button>
+        </div>
+    </div>
+    <div *ngIf="!isSignedIn">
+        <header>
+            <h2>Sign in with phone number</h2>
+        </header>
+        <div>
+        <button mat-icon-button (click)="openPhoneNumberDialog()">
+            <mat-icon>phone</mat-icon>
+        </button>
+        <button mat-raised-button color="accent" (click)="openPhoneNumberDialog()" (click)="signInBadgeToogle()"> Sign in with phone number </button>
         </div>
     </div>
 

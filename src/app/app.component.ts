@@ -9,6 +9,8 @@ import { DataService } from './shared/data.service';
 import { FirebaseService } from './shared/firebase.service';
 import { ConnexionDialogComponent } from './connexion-dialog/connexion-dialog.component';
 import { HeroDetailDialogComponent } from './hero-detail-dialog/hero-detail-dialog.component';
+import { OtpDialogComponent } from './otp-dialog/otp-dialog.component';
+import { PhoneConnexionDialogComponent } from './phone-connexion-dialog/phone-connexion-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +39,11 @@ export class AppComponent implements OnInit {
         width: '350px',  
         disableClose : true,
       })
+  }
+  openPhoneNumberDialog(){
+    this.matDialog.open(PhoneConnexionDialogComponent,{
+      width: '350px',
+    })
   }
   
 
