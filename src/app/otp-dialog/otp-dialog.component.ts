@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import "firebase/auth"
 import "firebase/firestore"
+import { UserProfilComponent } from '../user-profil/user-profil.component';
 
 
 @Component({
@@ -22,7 +23,8 @@ otp !: string;
 verify: any;
 isSignedIn = false;
 
-constructor( private router : Router, private matDialog : MatDialog) { }
+constructor( private router : Router, private matDialog : MatDialog,
+             private firebaseService : FirebaseService) { }
 
   ngOnInit() {
     this.connexion();
@@ -54,8 +56,10 @@ handleClick(){
   .then((response) => {
     localStorage.setItem('user_data', JSON.stringify(response));
     console.log(response);
-    this.closeOtpDialog();
-    this.router.navigate(['/userProfile']);
+    if(window.confirm("Succes")){
+        this.closeOtpDialog();
+        this.firebaseService.switch();
+        this.router.navigate(['/userProfile'])};
   }).catch((error) => {
     alert(error.message)
   })

@@ -21,6 +21,7 @@ export class DataService {
     return this.afs.collection('/Heroes').snapshotChanges();
   }
 
+  //Afficher un hero 
   getHero(hero : HeroSt){
     return this.afs.collection('/Heroes' +hero.idS).get();
   }

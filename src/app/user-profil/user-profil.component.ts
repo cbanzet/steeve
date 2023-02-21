@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConnexionDialogComponent } from '../connexion-dialog/connexion-dialog.component';
 import { FirebaseService } from '../shared/firebase.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,20 +18,22 @@ export class UserProfilComponent implements OnInit {
   userData: any;
   constructor(public firebaseService : FirebaseService,
               private matDialog : MatDialog,
-              private location : Location) { }
+              private location : Location,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.connexion()
-    var data = JSON.parse(localStorage.getItem('user_data') || '{}');
-    this.userData = data.user.phoneNumber;
-    console.log(this.userData);
+    
   }
 
   connexion(){
-    if(localStorage.getItem('user') !== null)
-      this.isSignedIn = true
+    if(localStorage.getItem('user' || 'user_data') !== null){
+      this.isSignedIn = false;
+      var data = JSON.parse(localStorage.getItem('user_data') || '{}');
+    this.userData = data.user.phoneNumber;
+    console.log(this.userData);}
     else
-    this.isSignedIn = false
+    this.isSignedIn = true
   }
 
   openConnexionDialog(){
@@ -43,11 +46,14 @@ export class UserProfilComponent implements OnInit {
     this.isSignedIn = true
     this.firebaseService.logout()
     this.isLogout.emit()
+    this.router.navigate(['/heroEdit'])
     }
   }
 
   goBack(): void {
     this.location.back();
   }
+
+  
 
 }

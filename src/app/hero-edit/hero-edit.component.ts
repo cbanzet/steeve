@@ -103,9 +103,7 @@ openDialog(){
 
   getHero(hero : HeroSt){
     this.hiddenDetails = !this.hiddenDetails;
-    if(window.confirm('Show ' +hero.firstName+ ' details?')){
-      this.data.getHero(hero);
-    }
+    
     this.heroObj.firstName = hero.firstName ;
     this.heroObj.name = hero.name
     this.heroObj.description = hero.description;
@@ -118,7 +116,7 @@ openDialog(){
     }
   }
   openHeroDetailDialog(){
-    this.matDialog.open(HeroDetailDialogComponent,{
+    const heroDetailsRef = this.matDialog.open(HeroDetailDialogComponent,{
       width: '350px',
       data : {
         firstName : this.heroObj.firstName,
@@ -126,7 +124,12 @@ openDialog(){
         age : this.heroObj.age,
         description : this.heroObj.description,
       }
-    })
+    });
+
+    heroDetailsRef.afterClosed().subscribe(
+      result => { this.uptName = result,
+      console.log(result) }
+    );
      
     }
 

@@ -5,6 +5,11 @@
     color: black;
     text-align: center;
   }
+
+  .search-box{
+    display: flex;
+    justify-content: end;
+  }
   
   .demo-button-container {
     padding-bottom: 16px;

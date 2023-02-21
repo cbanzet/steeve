@@ -66,5 +66,8 @@
 <div *ngIf="isSignedIn">
     <header> You are logged </header>
     <h2> Want to logout? </h2>
-    <button mat-raised-button color="warn" (click)="handleLogout()" align="end"> Logout </button>
+    <div align ="end">
+        <button mat-raised-button color="primary" (click)="userProfile()"> My profile </button>
+        <button mat-raised-button color="warn"(click)="handleLogout()" > Logout </button>
+    </div>
 </div>

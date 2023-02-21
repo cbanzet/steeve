@@ -1,15 +1,15 @@
-<div>
+<div  class="search-box">
       <mat-form-field>
         <mat-label>
           <mat-icon>search</mat-icon>
           Search
         </mat-label>
-        <input matInput id="firstName" [(ngModel)]="searchText" placeholder = "Search">
+        <input matInput [(ngModel)]="searchText" placeholder = "Search">
       </mat-form-field>
 </div>
 
 
-<h1>Heroes list</h1>
+<h1> Heroes list </h1>
 
 <div >
     <table mat-table [dataSource]="heroesList | search: searchText" class="mat-elevation-z8 demo-table"  style="margin: 5px">

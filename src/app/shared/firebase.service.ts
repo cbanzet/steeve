@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class FirebaseService {
 
-  isLoggedIn = false
+  isLoggedIn = false;
+  isSignedIn =  false;
   constructor(public firebaseAuth : AngularFireAuth, private router : Router) { }
   async singin(email : string , password: string){
     await this.firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -52,5 +53,9 @@ export class FirebaseService {
   }
   get windowRef(){
     return window
+  }
+
+  switch(){
+    this.isSignedIn = !this.isSignedIn;
   }
 }

@@ -2,37 +2,59 @@
     <mat-icon>close</mat-icon>
 </button>
 
-
-<div mat-dialog-content>
+<div mat-dialog-content *ngIf="!editBadge">
     <header>
-        <h1 > {{firstName}} Detail </h1>
+        <h1 > {{firstName}}  Detail </h1>
     </header>
-<mat-icon>person</mat-icon>
+    <mat-icon>person</mat-icon>
     
-        <mat-form-field>
-            <mat-label>First name</mat-label>
+        <mat-form-field >
             <span> First name </span>
             <h2> {{ firstName }} </h2>
-        </mat-form-field>
-    
-       <mat-form-field>
             <span> Name </span>
             <h2> {{ name }} </h2>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Age</mat-label>
             <span> Age </span>
             <h2> {{ age }} </h2>
-        </mat-form-field>
-
-       <mat-form-field>
-            <mat-label>Description</mat-label>
             <span> Description </span>
             <h2> {{ description }} </h2>
         </mat-form-field>
 </div>
 
+<div mat-dialog-content *ngIf="editBadge">
+    <header>
+        <h1 > Edittion mode </h1>
+        <h2> {{firstName}} </h2>
+    </header>
+    <mat-icon>edit</mat-icon>
+
+<mat-form-field >
+    <h2> First name </h2>
+    <input matInput [(ngModel)]="firstName" >
+</mat-form-field>
+
+<mat-form-field >
+    <h2> Name </h2>
+    <input matInput [(ngModel)]="name" >
+</mat-form-field>
+
+<mat-form-field >
+    <h2> Age  </h2>
+    <input matInput [(ngModel)]="age" >
+</mat-form-field>
+
+<mat-form-field >
+    <h2> Description</h2>
+    <input matInput [(ngModel)]="description">
+</mat-form-field>
+
+</div>
+
+
 <div mat-dialog-actions align="end">
-    <button mat-raised-button color="warn" matDialogClose > Close </button>
+    <button mat-raised-button color="primary" *ngIf="!editBadge" (click)="editBadgeToogle()">
+       Edit
+    </button>
+    <button mat-raised-button color="warn" *ngIf="!editBadge" matDialogClose> Close </button>
+    <button mat-raised-button color="primary" *ngIf="editBadge" (click)="updateHero()" [mat-dialog-close]=" firstName "> Save changes</button>
+    <button mat-raised-button color="warn" *ngIf="editBadge" (click)="editBadgeToogle()" > Cancel</button>
 </div>

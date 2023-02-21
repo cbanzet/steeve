@@ -1,11 +1,5 @@
 <h1>User profil!</h1>
-<div *ngIf="isSignedIn">
-    <h2>Welcome {{userData}} </h2>
+<div >
+    <h2>Welcome </h2>
 <button mat-raised-button color="warn" (click)="handleLogout()"> Logout</button>
-</div>
-<div *ngIf="!isSignedIn">
-<h1> Would you like to login? </h1>
-<button mat-raised-button color ="primary" (click)="openConnexionDialog()"> Login/Signin </button>
-<button mat-raised-button color="warn" (click)="goBack()" > back </button>
-
 </div>
