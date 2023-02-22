@@ -1,12 +1,32 @@
+22/02/2023
+
+Bug - Mettre tous les champs input au format angular material
+
+- Vérifier à l'aide d'un fichier guard si le user est authentifier ou non.
+  Sinon, le rediriger sur une page de login ou une page d'accueil 
+  avec un bouton permettant d'ouvrir la modal de login
+- Ajouter une catégorie pour classifier les héros à l'aide d'une nouvelle collection dénormalisée
+  La collection est structurée de la sorte : id, nom.
+  Elle dénormalisée sous la collection Heroes et à la racine.
+  https://www.youtube.com/watch?v=vKqXSZLLnHA&ab_channel=Firebase
+- Modal de mise à jour automatique sur la dernière version de l'application.
+  Un service dédié vérifie la version du user du package.json récupérée   
+  public version: string = packageJson.version;
+  et celle stockée dans un champs de firestore dans une nouvelle collection (config)
+  qu'il faudrait pouvoir mettre à jour si possible de manière automatisée sur nos release.
+  si elle est différente lors du début de session, 
+  une modal se lance automatiquement pour demander d'installer la dernière version.
+
+
 15/02/2023
 
-- Fermer la modal automatiquement apres avoir créer le hero
-- Mettre tous les champs input au format angular material
-- Mettre le composant visualisant les details d'un hero dans une modal
-- Supprimer tous les composants non utilisés
-- Ajouter un module d'authentification par email/password
-- Ajouter l'authentification par google
-- Ajouter l'authentification par numéro de mobile
+ok - Fermer la modal automatiquement apres avoir créer le hero
+Bug - Mettre tous les champs input au format angular material
+ok - Mettre le composant visualisant les details d'un hero dans une modal
+ok - Supprimer tous les composants non utilisés
+Evol - Ajouter un module d'authentification par email/password
+Evol - Ajouter l'authentification par google
+Evol - Ajouter l'authentification par numéro de mobile
 
 
 
