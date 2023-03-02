@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
+import { SwUpdate, VersionReadyEvent } from '@angular/pwa';
 import { filter, map } from 'rxjs';
-import { InformDialogComponent } from '../components/inform-dialog/inform-dialog.component';
+import { InformDialogComponent } from '../inform-dialog/inform-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,6 @@ export class AppUpdateService {
     dialogRef.afterClosed().subscribe(result => {
       this.doAppUpdate();
     });
-
 
   }
 

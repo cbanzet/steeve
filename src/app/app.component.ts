@@ -11,7 +11,7 @@ import { ConnexionDialogComponent } from './connexion-dialog/connexion-dialog.co
 import { HeroDetailDialogComponent } from './hero-detail-dialog/hero-detail-dialog.component';
 import { OtpDialogComponent } from './otp-dialog/otp-dialog.component';
 import { PhoneConnexionDialogComponent } from './phone-connexion-dialog/phone-connexion-dialog.component';
-
+import { InformDialogComponent } from './inform-dialog/inform-dialog.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,15 +21,19 @@ export class AppComponent implements OnInit {
   heroesList : HeroSt[] = [];
   hidden = false;
   isSignedIn = false;
+  appVersion : string ='';
 
   
   constructor(private matDialog : MatDialog,
-              private data : DataService
+              private data : DataService,
              ){ }
 
   ngOnInit(){
-    
+    this.matDialog.open(InformDialogComponent,{
+      width: '350px',})
   }
+  
+
   openConnexionDialog(){
     this.matDialog.open(ConnexionDialogComponent,{
       width: '350px',})

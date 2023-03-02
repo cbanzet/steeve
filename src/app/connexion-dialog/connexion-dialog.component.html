@@ -1,66 +1,122 @@
+    <div class="container" *ngIf="!isSignedIn && !signInBadge">
+    <mat-card>
+        <mat-card-content>
+            <p>
+                <mat-toolbar color="primary">
+                  <span>Login Page</span>
+                  <mat-icon>person</mat-icon>
+                </mat-toolbar>
+              </p>
+            <mat-list>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput #email placeholder="pat@example.com" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput #password [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-list>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary"
+                (click)="onSignin(email.value , password.value)">
+                Login
+            </button>
+            <button mat-button (click)="signInBadgeToogle()">Signin</button>
+        </mat-card-actions>
 
-<button mat-icon-button style="float: right; margin: 5px;"matDialogClose>
-    <mat-icon>close</mat-icon>
-</button>
+        <mat-card-content class="margin">
+            <div *ngIf="!isSignedIn">
+                 <h3>Sign in with google</h3>
+                    <mat-card-actions text-align="center">
+                        <button mat-raised-button color="accent" 
+                        (click)="signInWithGoogle()" 
+                        (click)="signInBadgeToogle()"> 
+                        Sign in with Google 
+                    </button>
+                    </mat-card-actions>
+          
+                <h3>Sign in with phone number</h3>
+                <mat-card-actions text-align="center">
+                    <button mat-raised-button color="accent"
+                     (click)="openPhoneNumberDialog()" 
+                     (click)="signInBadgeToogle()">
+                      Sign in with phone number 
+                      <mat-icon>phone</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
 
+<div class="container" *ngIf="!isSignedIn && signInBadge">
+    <mat-card>
+        <mat-card-content>
+            <p>
+                <mat-toolbar color="primary">
+                  <span>Signin Page</span>
+                  <mat-icon>person</mat-icon>
+                </mat-toolbar>
+              </p>
+            <mat-list>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput #emailSignup placeholder="pat@example.com" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter a new password</mat-label>
+                    <input matInput #passwordSignup [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-list>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="accent"
+                (click)="onSignup(emailSignup.value , passwordSignup.value)">
+                Signin
+            </button>
+            <button mat-button
+                (click)="signInBadgeToogle()">
+                Login
+            </button>
+        </mat-card-actions>
 
-<div mat-dialog-content>
-    <header>
-        <h1 > Connexion </h1>
-    </header>
-    <mat-icon>person</mat-icon>
-    <div *ngIf="!isSignedIn && signInBadge" >
-        <header>
-            <h2>Signin</h2>
-        </header>
-        <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput type="text" #emailSignup placeholder="ex. pierre.pon@gmail.com">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput type="password" #passwordSignup placeholder="New password">
-        </mat-form-field>
-        <button mat-raised-button color="accent" (click)="onSignup(emailSignup.value , passwordSignup.value)">Sign in</button>
-        <a> or </a>
-        <button mat-raised-button (click)="signInBadgeToogle()"> Login</button> 
-    </div>
-    <br>
-    <div *ngIf="!isSignedIn && !signInBadge">
-        <header>
-            <h2>Login</h2>
-        </header>
-        <mat-form-field>
-            <input matInput type="text" #email placeholder="email"/>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput  type="password" #password placeholder ="password"/>
-        </mat-form-field>
-        <button mat-raised-button color ="primary" (click)="onSignin(email.value , password.value)">Login</button>
-        <a> or </a>
-        <button mat-raised-button (click)="signInBadgeToogle()"> Sign in </button>
-    </div>
-    <br>
-    <div *ngIf="!isSignedIn">
-        <header>
-            <h2>Sign in with google</h2>
-        </header>
-        <div>
-        <button mat-raised-button color="accent" (click)="signInWithGoogle()" (click)="signInBadgeToogle()"> Sign in with Google </button>
-        </div>
-    </div>
-    <div *ngIf="!isSignedIn">
-        <header>
-            <h2>Sign in with phone number</h2>
-        </header>
-        <div>
-        <button mat-icon-button (click)="openPhoneNumberDialog()">
-            <mat-icon>phone</mat-icon>
-        </button>
-        <button mat-raised-button color="accent" (click)="openPhoneNumberDialog()" (click)="signInBadgeToogle()"> Sign in with phone number </button>
-        </div>
-    </div>
-
+        <mat-card-content class="margin">
+            <div *ngIf="!isSignedIn">
+                 <h3>Sign in with google</h3>
+                    <mat-card-actions text-align="center">
+                        <button mat-raised-button color="accent" 
+                        (click)="signInWithGoogle()" 
+                        (click)="signInBadgeToogle()"> 
+                        Sign in with Google 
+                    </button>
+                    </mat-card-actions>
+            </div>
+        </mat-card-content>
+        
+        <mat-card-content class="margin">
+            <div *ngIf="!isSignedIn">
+                <h3>Sign in with phone number</h3>
+                <mat-card-actions text-align="center">
+                    <button mat-raised-button color="accent"
+                     (click)="openPhoneNumberDialog()" 
+                     (click)="signInBadgeToogle()">
+                      Sign in with phone number 
+                      <mat-icon>phone</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>
 
 <div *ngIf="isSignedIn">

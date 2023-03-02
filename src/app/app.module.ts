@@ -32,6 +32,8 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
 import { HeroDetailDialogComponent } from './hero-detail-dialog/hero-detail-dialog.component';
 import { OtpDialogComponent } from './otp-dialog/otp-dialog.component';
 import { PhoneConnexionDialogComponent } from './phone-connexion-dialog/phone-connexion-dialog.component';
+import { InformDialogComponent } from './inform-dialog/inform-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,8 @@ import { PhoneConnexionDialogComponent } from './phone-connexion-dialog/phone-co
     UserProfilComponent,
     HeroDetailDialogComponent,
     OtpDialogComponent,
-    PhoneConnexionDialogComponent
+    PhoneConnexionDialogComponent,
+    InformDialogComponent
     
   ],
   imports: [

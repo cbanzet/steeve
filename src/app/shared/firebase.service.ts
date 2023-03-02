@@ -45,10 +45,17 @@ export class FirebaseService {
   phonelogin(){
     return this.firebaseAuth.signInWithPhoneNumber
   }
+  checkIfLoggedIn(){
+    return !!localStorage.getItem('user');
+  }
+  phoneIsLogged(){
+    return !!localStorage.getItem('user_data');
+  }
   
   logout(){
     this.firebaseAuth.signOut()
-    localStorage.removeItem('user')
+    localStorage.removeItem('user');
+    localStorage.removeItem('user_data');
     this.isLoggedIn = false;
   }
   get windowRef(){

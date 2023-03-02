@@ -14,7 +14,17 @@ import { UserProfilComponent } from '../user-profil/user-profil.component';
 })
 
 export class ConnexionDialogComponent implements OnInit {
+  
+  email = new FormControl('', [Validators.required, Validators.email]);
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+  hide = true;
   @Output() isLogout = new EventEmitter<void>()
   constructor(public firebaseService : FirebaseService,
                private matDialog: MatDialog, private router : Router

@@ -66,7 +66,7 @@ handleClick(){
 }
 
 connexion(){
-  if(localStorage.getItem('user') !== null)
+  if(localStorage.getItem('user' || 'user_data') !== null)
     this.isSignedIn = true
   else
   this.isSignedIn = false
