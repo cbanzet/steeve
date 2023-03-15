@@ -41,7 +41,7 @@ export class HeroEditComponent implements OnInit {
   toggleDetailsBadgeVisibility() {
     this.hiddenDetails = !this.hiddenDetails;
   }
-  
+
 
   constructor(private data : DataService,
               private matDialog : MatDialog){}
@@ -60,7 +60,7 @@ openDialog(){
 
   ngOnInit(): void {
     this.getAllHeroes();
-    
+
   }
 
   getAllHeroes(){
@@ -96,16 +96,16 @@ openDialog(){
   }
 
   updateHero(hero : HeroSt){
-     this.hidden = !this.hidden; 
+     this.hidden = !this.hidden;
     if(window.confirm('Update data to ' + hero.firstName + hero.name  ))
          {this.data.updateHero(hero);}
   }
 
   getHero(hero : HeroSt){
     this.hiddenDetails = !this.hiddenDetails;
-    
+
     this.heroObj.firstName = hero.firstName ;
-    this.heroObj.name = hero.name
+    this.heroObj.name = hero.name;
     this.heroObj.description = hero.description;
     this.heroObj.age = hero.age;
   }
@@ -130,7 +130,7 @@ openDialog(){
       result => { this.uptName = result,
       console.log(result) }
     );
-     
+
     }
 
 }

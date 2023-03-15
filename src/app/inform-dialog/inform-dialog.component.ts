@@ -21,4 +21,6 @@ export class InformDialogComponent implements OnInit {
     this.title = this.data.title ?? "";
   }
 
+
+
 }

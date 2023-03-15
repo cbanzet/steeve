@@ -1,3 +1,4 @@
+import { UpdateServiceService } from './shared/update-service.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FirebaseTSApp } from 'firebasets/firebasetsApp/firebaseTSApp';
@@ -23,16 +24,17 @@ export class AppComponent implements OnInit {
   isSignedIn = false;
   appVersion : string ='';
 
-  
+
   constructor(private matDialog : MatDialog,
               private data : DataService,
+              private updateService : UpdateServiceService,
              ){ }
 
   ngOnInit(){
-    this.matDialog.open(InformDialogComponent,{
-      width: '350px',})
+    this.updateService.showAppUpdateAlert();
+
   }
-  
+
 
   openConnexionDialog(){
     this.matDialog.open(ConnexionDialogComponent,{
@@ -40,7 +42,7 @@ export class AppComponent implements OnInit {
   }
   openDialog(){
       this.matDialog.open(DialogComponent,{
-        width: '350px',  
+        width: '350px',
         disableClose : true,
       })
   }
@@ -49,7 +51,7 @@ export class AppComponent implements OnInit {
       width: '350px',
     })
   }
-  
+
 
   toggleBadgeVisibility(){
     this.hidden = !this.hidden
@@ -57,7 +59,7 @@ export class AppComponent implements OnInit {
 
   connectIconBadge(){
     this.isSignedIn = !this.isSignedIn;
-  } 
+  }
   title = 'steeve';
 
   checkIfConnect(){
@@ -69,9 +71,9 @@ export class AppComponent implements OnInit {
 
 
   updateHero(hero : HeroSt){
-    this.hidden = !this.hidden; 
+    this.hidden = !this.hidden;
    if(window.confirm('Update data to ' + hero.firstName + hero.name  ))
         {this.data.updateHero(hero);}
  }
-  
+
 }
