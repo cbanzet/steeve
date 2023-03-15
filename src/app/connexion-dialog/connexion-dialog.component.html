@@ -1,5 +1,5 @@
     <div class="container" *ngIf="!isSignedIn && !signInBadge">
-    <mat-card>
+    <mat-card appearance="outlined">
         <mat-card-content>
             <p>
                 <mat-toolbar color="primary">
@@ -56,7 +56,7 @@
 </div>
 
 <div class="container" *ngIf="!isSignedIn && signInBadge">
-    <mat-card>
+    <mat-card appearance="outlined">
         <mat-card-content>
             <p>
                 <mat-toolbar color="primary">

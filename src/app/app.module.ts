@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +33,7 @@ import { HeroDetailDialogComponent } from './hero-detail-dialog/hero-detail-dial
 import { OtpDialogComponent } from './otp-dialog/otp-dialog.component';
 import { PhoneConnexionDialogComponent } from './phone-connexion-dialog/phone-connexion-dialog.component';
 import { InformDialogComponent } from './inform-dialog/inform-dialog.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,12 @@ import { InformDialogComponent } from './inform-dialog/inform-dialog.component';
     MatDialogModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
