@@ -1,9 +1,11 @@
+import { AuthGuard } from './shared/auth.guard';
+import { CanActivate } from '@angular/router';
 import { UpdateServiceService } from './shared/update-service.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FirebaseTSApp } from 'firebasets/firebasetsApp/firebaseTSApp';
 import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
-import { HeroSt } from './model/hero';
+import { HeroSt, appVersion } from './model/hero';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from './shared/data.service';
@@ -22,7 +24,9 @@ export class AppComponent implements OnInit {
   heroesList : HeroSt[] = [];
   hidden = false;
   isSignedIn = false;
-  appVersion : string ='';
+  public appVersion : appVersion[] = []
+
+
 
 
   constructor(private matDialog : MatDialog,
@@ -31,8 +35,7 @@ export class AppComponent implements OnInit {
              ){ }
 
   ngOnInit(){
-    this.updateService.showAppUpdateAlert();
-
+    this.checkAppVersion();
   }
 
 
@@ -40,7 +43,7 @@ export class AppComponent implements OnInit {
     this.matDialog.open(ConnexionDialogComponent,{
       width: '350px',})
   }
-  openDialog(){
+  openDialog (){
       this.matDialog.open(DialogComponent,{
         width: '350px',
         disableClose : true,
@@ -74,6 +77,18 @@ export class AppComponent implements OnInit {
     this.hidden = !this.hidden;
    if(window.confirm('Update data to ' + hero.firstName + hero.name  ))
         {this.data.updateHero(hero);}
+ }
+
+ checkForUpdate(){
+  this.updateService.checkForUpdate();
+ }
+
+ checkAppVersion(){
+  this.updateService.getAppVersion().subscribe(
+    (result : any) => {
+      this.appVersion = result;
+    }
+  );
  }
 
 }

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "steeve-531ff"
+  },
+  "targets": {
+    "steeve-531ff": {
+      "hosting": {
+        "steeve": [
+          "steeve-531ff"
+        ]
+      }
+    }
   }
 }

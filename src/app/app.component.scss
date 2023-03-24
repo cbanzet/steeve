@@ -21,50 +21,49 @@ a{
     margin: 0;
 }
 
-/* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
 mat-card{
     background-color: primary;
     color: black;
 }
-/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 mat-button-toggle-group {
     margin-left: 12px;
   }
   section {
     display: table;
   }
-  
+
   .label {
     display: table-cell;
     font-size: 14px;
     margin-left: 8px;
     min-width: 120px;
   }
-  
+
   .button-row {
     display: table-cell;
     max-width: 600px;
   }
-  
+
   .button-row .mat-mdc-button-base {
     margin: 8px 8px 8px 0;
   }
-  
+
   .flex-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
   }
-  
+
   button-container {
     display: flex;
     justify-content: center;
     width: 120px;
   }
-  
+
   .footer{
     position: fixed;
     bottom: 0;
     text-align: center;
-    height: 25px;
+    height: 15px;
+    z-index: 100;
   }

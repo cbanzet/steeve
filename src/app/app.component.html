@@ -14,10 +14,15 @@
             <mat-icon >edit</mat-icon>
             <span>Edit</span>
           </button>
-          <button mat-menu-item 
+          <button mat-menu-item
           (click) = "openConnexionDialog()">
             <mat-icon>login</mat-icon>
             <span>Connect</span>
+          </button>
+          <button mat-menu-item
+            (click)="checkForUpdate()">
+            <mat-icon>autorenew</mat-icon>
+            <span>Check for updates</span>
           </button>
         </mat-menu>
       </button>
@@ -38,9 +43,9 @@
   </mat-toolbar>
 </p>
 
-<p>
+<p >
   <mat-toolbar class="footer" color="primary">
-    <span>Version .. .. ..</span>
+    <span *ngFor="let v of appVersion"> app version: {{v.version}}</span>
   </mat-toolbar>
 </p>
 

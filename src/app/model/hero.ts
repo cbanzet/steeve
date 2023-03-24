@@ -4,5 +4,9 @@ export interface HeroSt{
     name: string;
     age: string;
     description: string;
-    action : any;   
+    action : any;
+}
+
+export interface appVersion{
+  version: string;
 }

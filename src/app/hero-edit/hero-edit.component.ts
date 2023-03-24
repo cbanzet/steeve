@@ -1,3 +1,8 @@
+import { collection } from 'firebase/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { UpdateServiceService } from './../shared/update-service.service';
+import { appVersion } from './../model/hero';
 import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,7 +22,6 @@ import { DataService } from '../shared/data.service';
 export class HeroEditComponent implements OnInit {
 
  heroesList : HeroSt[] = [];
-
   heroObj : HeroSt = {
     idS: '',
     firstName: '',
@@ -35,6 +39,7 @@ export class HeroEditComponent implements OnInit {
   hidden = false;
   hiddenDetails = false;
 
+
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
   }
@@ -44,7 +49,9 @@ export class HeroEditComponent implements OnInit {
 
 
   constructor(private data : DataService,
-              private matDialog : MatDialog){}
+              private matDialog : MatDialog,
+              private updateService : UpdateServiceService,
+              private afs : AngularFirestore){}
 
 openDialog(){
   this.matDialog.open(DialogComponent,{
@@ -60,7 +67,6 @@ openDialog(){
 
   ngOnInit(): void {
     this.getAllHeroes();
-
   }
 
   getAllHeroes(){
@@ -80,6 +86,7 @@ openDialog(){
     this.name = '';
     this.description = '';
   }
+
 
   addHero(){
     if(this.name === '' || this.firstName === ''){
@@ -130,7 +137,6 @@ openDialog(){
       result => { this.uptName = result,
       console.log(result) }
     );
-
     }
 
 }
@@ -153,3 +159,11 @@ class ExampleDataSource extends DataSource<HeroSt> {
     this._dataStream.next(data);
   }
 }
+function ref(afs: AngularFirestore, arg1: string) {
+  throw new Error('Function not implemented.');
+}
+
+function onValue(startCountRef: any) {
+  throw new Error('Function not implemented.');
+}
+

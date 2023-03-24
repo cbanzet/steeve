@@ -8,7 +8,8 @@ import { HeroSt } from '../model/hero';
 })
 export class DataService {
 
-  constructor(private afs : AngularFirestore) {}
+  constructor(private afs : AngularFirestore,
+              ) {}
 
   // Ajouter un hero (create)
   addHero(hero: HeroSt){
@@ -21,7 +22,7 @@ export class DataService {
     return this.afs.collection('/Heroes').snapshotChanges();
   }
 
-  //Afficher un hero 
+  //Afficher un hero
   getHero(hero : HeroSt){
     return this.afs.collection('/Heroes' +hero.idS).get();
   }
@@ -31,9 +32,10 @@ export class DataService {
     this.afs.doc('/Heroes/' +hero.idS).update(hero);
   }
 
- 
+
   //Supprimer un hero (delete)
   deleteHero(hero : HeroSt){
     return this.afs.doc('/Heroes/'+hero.idS).delete();
   }
+
 }

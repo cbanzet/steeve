@@ -12,8 +12,8 @@ const routes: Routes = [
   {path : 'connexion' , component: ConnexionDialogComponent},
   {path : 'heroEdit', component: HeroEditComponent, canActivate:[AuthGuard]},
   {path: '', redirectTo: '/connexion', pathMatch: 'full'},
-  {path: 'userProfile', component: UserProfilComponent },
-  {path: 'optCode', component : OtpDialogComponent},
+  {path: 'userProfile', component: UserProfilComponent, canActivate:[AuthGuard] },
+  {path: 'optCode', component : OtpDialogComponent , canActivate:[AuthGuard]},
 ];
 
 @NgModule({
