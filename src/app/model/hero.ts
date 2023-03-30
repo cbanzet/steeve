@@ -10,3 +10,7 @@ export interface HeroSt{
 export interface appVersion{
   version: string;
 }
+
+export interface PACKAGEVERSION{
+  version: string;
+}

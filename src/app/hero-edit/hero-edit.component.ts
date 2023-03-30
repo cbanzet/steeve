@@ -2,7 +2,7 @@ import { collection } from 'firebase/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UpdateServiceService } from './../shared/update-service.service';
-import { appVersion } from './../model/hero';
+import { appVersion, PACKAGEVERSION } from './../model/hero';
 import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,6 +11,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { HeroDetailDialogComponent } from '../hero-detail-dialog/hero-detail-dialog.component';
 import { HeroSt } from '../model/hero';
 import { DataService } from '../shared/data.service';
+import PackageVersion from 'pack.json'
 
 
 
@@ -38,6 +39,8 @@ export class HeroEditComponent implements OnInit {
   uptName : string ='';
   hidden = false;
   hiddenDetails = false;
+
+  currentPackageVersion: PACKAGEVERSION[] = [];
 
 
   toggleBadgeVisibility() {
@@ -67,6 +70,8 @@ openDialog(){
 
   ngOnInit(): void {
     this.getAllHeroes();
+    this.currentPackageVersion = PackageVersion;
+    console.log(this.currentPackageVersion);
   }
 
   getAllHeroes(){

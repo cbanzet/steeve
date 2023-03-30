@@ -1,4 +1,4 @@
-import { appVersion } from './../model/hero';
+import { appVersion, PACKAGEVERSION } from './../model/hero';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { InformDialogComponent } from './../inform-dialog/inform-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,13 +6,14 @@ import { Injectable } from '@angular/core';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { filter, Observable } from 'rxjs';
 import { collection } from 'firebase/firestore';
-
+import PackageVersion from  'pack.json'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UpdateServiceService {
 
+  currentPackageVersion : PACKAGEVERSION[] = PackageVersion;
   currentVersion : string ="0.0.1";
   appVersion : any;
   public appVersionInFirebase : appVersion [] = [];
@@ -26,7 +27,7 @@ export class UpdateServiceService {
 
   checkForUpdate(){
     console.log("App update service");
-    console.log(this.getAppVersion());
+    console.log(this.currentPackageVersion);
     this.swUpdate.versionUpdates.pipe(
       filter((evt): evt is VersionReadyEvent => {
         console.log("app update event:" + evt.type + evt);
@@ -38,10 +39,8 @@ export class UpdateServiceService {
 
   showAppUpdateAlert(){
     const title = "Nouvelle version de l'application disponible";
-    const message = "Cliquez sur installer pour poursuivre et installer la version: ";
+    const message = "Cliquez sur installer pour poursuivre et installer la version récente ";
     const action = "Instaler";
-    const currentAppVersion = this.currentVersion;
-    const nextAppVersion = "0.0.2"
 
     let dialogRef = this.matdialog.open(InformDialogComponent,{
       disableClose: true,
@@ -49,8 +48,6 @@ export class UpdateServiceService {
         title: title,
         message : message,
         action: action,
-        currentAppVersion : currentAppVersion,
-        nextAppVersion : nextAppVersion
       }
     });
   dialogRef.afterClosed().subscribe(result =>{
@@ -74,9 +71,7 @@ export class UpdateServiceService {
 
   getAppVersion(){
    return this.afs.collection('/APP_VERSION').valueChanges();
- 
     }
-
 
   }
 

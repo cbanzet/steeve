@@ -59,6 +59,10 @@ mat-button-toggle-group {
     justify-content: center;
     width: 120px;
   }
+  .header{
+    top: 0;
+    z-index: 100;
+  }
 
   .footer{
     position: fixed;

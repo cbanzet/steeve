@@ -44,6 +44,7 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     HeroDetailDialogComponent,
     OtpDialogComponent,
     PhoneConnexionDialogComponent,
-    InformDialogComponent
+    InformDialogComponent,
+    SplashScreenComponent
 
   ],
   imports: [

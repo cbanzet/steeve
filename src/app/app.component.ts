@@ -1,3 +1,4 @@
+import { SwPush } from '@angular/service-worker';
 import { AuthGuard } from './shared/auth.guard';
 import { CanActivate } from '@angular/router';
 import { UpdateServiceService } from './shared/update-service.service';
@@ -32,10 +33,12 @@ export class AppComponent implements OnInit {
   constructor(private matDialog : MatDialog,
               private data : DataService,
               private updateService : UpdateServiceService,
+              private swPush : SwPush
              ){ }
 
   ngOnInit(){
     this.checkAppVersion();
+    this.requestSubscription();
   }
 
 
@@ -91,4 +94,18 @@ export class AppComponent implements OnInit {
   );
  }
 
+ requestSubscription = () => {
+  if (!this.swPush.isEnabled) {
+    console.log("Notification is not enabled.");
+    return;
+  }
+
+  this.swPush.requestSubscription({
+    serverPublicKey: 'BJ3jFKGRoGDzSIl1bQvm6assRsjEG236iaLxUe8C_h5xi0W2yYwTom6BKMkmoz0MVOn2GCFztvn8umS2bhNtgvo'
+  }).then((_) => {
+    console.log(JSON.stringify(_));
+  }).catch((_) => console.log);
+};
 }
+
+

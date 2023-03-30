@@ -1,3 +1,5 @@
+import { appVersion } from './../model/hero';
+import { UpdateServiceService } from './../shared/update-service.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -11,21 +13,15 @@ export class InformDialogComponent implements OnInit {
   public title: string = "";
   public message: string = "";
   public action: string = "";
-  public currentAppVersion : string ="";
-  public nextAppVersion : string ="";
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { message: string, action: string,
-     title: string, currentAppVersion: string, nextAppVersion : string }) { }
+     title: string, currentAppVersion: string, nextAppVersion : string }) {}
 
   ngOnInit(): void {
     this.message = this.data.message ?? "";
     this.action = this.data.action ?? "";
     this.title = this.data.title ?? "";
-    this.currentAppVersion = this.data.currentAppVersion ?? "";
-    this.nextAppVersion = this.data.nextAppVersion ?? "";
   }
-
-
 
 }
